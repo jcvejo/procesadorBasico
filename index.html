@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8' >
+<title>Procesador de texto 2.0</title>
+<script>
+var dato=localStorage.nombres;
+var dato2=localStorage.fondo;
+var dato3=localStorage.texto;
+var dato4=localStorage.letras;
+var dato5=localStorage.titulos;
+var dato6=localStorage.tama;
+
+window.onload= function(){
+
+var texto= document.getElementById('titulo');
+if(dato5!=null){
+texto.innerHTML=dato5;
+texto.style.color=dato;
+}
+var back= document.body;
+back.style.backgroundColor=dato2;
+var cuadro=document.getElementById('cuadro');
+if(dato3!=null){
+cuadro.innerHTML=dato3;
+}
+cuadro.style.color=dato4;
+}
+function titulo(){
+var titulo2 = document.getElementById('titulo').value;
+var a=localStorage.titulos=titulo2;
+
+
+
+}
+function colores(){
+var color = document.getElementById('color').value;
+var texto= document.getElementById('titulo');
+texto.style.color=color;
+
+var guardar= localStorage.nombres=color;
+
+}
+function fondo(){
+
+var back= document.getElementById('back').value;
+document.body.style.backgroundColor=back;
+
+var guardar2=localStorage.fondo=back;
+
+}
+function resetear(){
+
+localStorage.removeItem('nombres');
+localStorage.removeItem('fondo');
+localStorage.removeItem('texto');
+localStorage.removeItem('letras');
+localStorage.removeItem('titulos');
+location.reload();
+
+}
+function guardar(){
+var guardar=document.getElementById('guardar');
+guardar.innerHTML='Guardando...';
+
+}
+
+function escribir(){
+var cuadro=document.getElementById('cuadro').value;
+localStorage.texto=cuadro;
+var guardar=document.getElementById('guardar');
+guardar.innerHTML='Guardado!';
+
+
+}
+
+function letra(){
+var letra = document.getElementById('letra').value;
+var cuadro=document.getElementById('cuadro');
+cuadro.style.color=letra;
+localStorage.letras=letra;
+
+}
+
+
+
+
+</script>
+</head>
+<body style='text-align:center'>
+
+<!--<h1 id='text' onkeydown='titulo();' contenteditable='true'></h1>--><textarea id='titulo' onkeyup='titulo();' type='text' placeholder='Ingrese título' style='border:none; resize:none' cols='100px' ></textarea></br></br>
+<textarea id='cuadro' cols='60px' rows='20px' placeholder='complete con texto'onkeyup='escribir();' onkeydown='guardar();'></textarea><br>
+<p id='guardar' >Documento guardado!</p>
+
+</br>
+
+<label><b>Titulo</b></label><input type='color' name='color' id='color' onchange='colores();' /><!--<button onclick='colores();'>Enviar</button> -->
+<label><b>Fondo</b></label><input type='color' name='color' id='back' onchange='fondo();' value='#FFFFFF' /><!--<button onclick='fondo();'>Enviar</button>-->
+<label><b>Cuerpo</b></label><input type='color' name='color' id='letra' onchange='letra();' />
+<button onclick='resetear();'>Borrar todo</button>
+<br>
+</body>
+</html> 
